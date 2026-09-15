@@ -1,0 +1,43 @@
+[project]
+name = "jawa"
+version = "0.1.0"
+description = "Independent downstream research on defensible conditional feature screening"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+    "numpy>=2,<3",
+    "polars>=1.44.1,<2",
+    "statsmodels>=0.15,<0.16",
+]
+
+[project.urls]
+Homepage = "https://github.com/joshuamyers22/jawa"
+Repository = "https://github.com/joshuamyers22/jawa"
+Issues = "https://github.com/joshuamyers22/jawa/issues"
+Changelog = "https://github.com/joshuamyers22/jawa/blob/main/CHANGELOG.md"
+
+[project.scripts]
+"jawa" = "jawa.cli:main"
+"jawa-regression" = "jawa.analysis_cli:main"
+"jawa-validate" = "jawa.time_validation_cli:main"
+"jawa-dataset" = "jawa.dataset_cli:main"
+
+[build-system]
+requires = ["hatchling==1.32.0"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pyright==1.1.411", "ruff==0.16.5"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "strict"
+include = ["src", "tests"]
