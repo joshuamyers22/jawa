@@ -13,6 +13,7 @@ secrets, personal data, client data, or hidden reasoning here.
 | `research-only` | All capabilities are research-only until their capability-specific release gates pass. | `docs/PROJECT_PLAN.md` | 2026-09-15 |
 | `data-boundary` | Initial work uses only synthetic and appropriately licensed public data. | `PROJECT_BRIEF.md` | 2026-09-15 |
 | `locked-evidence` | Consequential results bind inputs, plan, environment, revision, seeds, search history, and output hashes. | `REPRODUCIBILITY.md` | 2026-09-15 |
+| `runtime-support` | Supported runtimes are CPython 3.11 and 3.12; CI and distribution smoke checks must run under both rather than relying on `.python-version`. | `pyproject.toml`; `.github/workflows/ci.yml` | 2026-09-16 |
 
 ## Accepted decisions
 
@@ -23,12 +24,14 @@ secrets, personal data, client data, or hidden reasoning here.
 | `capability-staging` | Build and validate the conditional predictive screen before local modeling, drift, or any causal research track. | `docs/PROJECT_PLAN.md` | 2026-09-15 |
 | `project-license` | Distribute Jawa under the MIT License, selected explicitly by the owner. | `LICENSE`; `pyproject.toml` | 2026-09-15 |
 | `m0-contract` | M0 is complete: provenance, independent-downstream identity, claim containment, and the project boundary are approved; no statistical method or inferential claim was approved. | `docs/milestones/M0_COMPLETION.md` | 2026-09-16 |
+| `m1-foundation` | M1 is complete: clean-build, runtime-matrix, isolated distribution, release identity, checksum/SBOM/provenance, and screening-envelope controls are established; no screening method was approved. | `docs/milestones/M1_COMPLETION.md` | 2026-09-16 |
+| `screening-envelope-v1` | `jawa-screening-evidence/v1` fixes future result provenance and review structure without selecting statistical semantics. | `docs/SCREENING_EVIDENCE_CONTRACT.md`; schema | 2026-09-16 |
 
 ## Non-obvious current state
 
 | Key | State worth retrieving later | Evidence | Last verified |
 |---|---|---|---|
-| `preimplementation` | M0 is complete, but the CLI and regression modules remain template fixtures rather than a released Jawa screening implementation. | `README.md`; `docs/milestones/M0_COMPLETION.md` | 2026-09-16 |
+| `preimplementation` | M0 and M1 are complete, but the CLI and regression modules remain template fixtures rather than a released Jawa screening implementation. | `README.md`; M0/M1 completion records | 2026-09-16 |
 | `probe-fs-role` | `probe_fs` is a possible full-conditioning LOCO benchmark comparator, not a dependency or truth oracle. | `docs/PROJECT_PLAN.md` | 2026-09-15 |
 
 ## Verified traps and failed approaches

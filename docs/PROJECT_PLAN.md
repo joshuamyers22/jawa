@@ -2,7 +2,7 @@
 
 ## Plan metadata
 
-- Status: Active; M0 complete, implementation not started
+- Status: Active; M0 and M1 complete, statistical implementation not started
 - Last updated: 2026-09-16
 - Accountable owner: Joshua Myers
 - Upstream reference: `rahulkm3/causalscreen` at
@@ -79,7 +79,7 @@ consequence of finishing code.
 | Milestone | Status | Evidence |
 |---|---|---|
 | M0 — Contract and provenance | Complete (2026-09-16) | `docs/milestones/M0_COMPLETION.md` |
-| M1 — Reproducible foundation | In progress (generated baseline only) | Quality gates and CI; remaining release controls below |
+| M1 — Reproducible foundation | Complete (2026-09-16) | `docs/milestones/M1_COMPLETION.md` |
 | M2 — Corrected screen | Not started | Blocked on statistical choices and independent review |
 | M3 — Locked evidence | Not started | Requires M2 protocol freeze |
 | M4 — Local models | Not started | Experimental; requires M2 contracts |
@@ -105,6 +105,9 @@ Exit gate: README, package metadata, API vocabulary, and analysis plan describe
 the same scope; no supported claim depends on an unapproved causal assumption.
 
 ### M1 — Reproducible engineering foundation
+
+**Status:** Complete on 2026-09-16. See
+`docs/milestones/M1_COMPLETION.md` for the evidence and scope boundary.
 
 Deliverables:
 

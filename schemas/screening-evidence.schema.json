@@ -1,0 +1,267 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/joshuamyers22/jawa/raw/main/schemas/screening-evidence.schema.json",
+  "title": "Jawa screening evidence envelope v1",
+  "description": "Provenance and result envelope only; it does not approve a statistical method or causal interpretation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "analysis",
+    "environment",
+    "data",
+    "randomness",
+    "specification",
+    "candidate_history",
+    "diagnostics",
+    "validation",
+    "warnings",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "jawa-screening-evidence/v1"
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "evaluated_at_utc",
+        "code_revision",
+        "analysis_plan"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "evaluated_at_utc": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "code_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "analysis_plan": { "$ref": "#/$defs/hashed_path" }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lockfile",
+        "python",
+        "jawa",
+        "numpy",
+        "polars",
+        "statsmodels"
+      ],
+      "properties": {
+        "lockfile": { "$ref": "#/$defs/hashed_path" },
+        "python": { "type": "string", "minLength": 1 },
+        "jawa": { "type": "string", "minLength": 1 },
+        "numpy": { "type": "string", "minLength": 1 },
+        "polars": { "type": "string", "minLength": 1 },
+        "statsmodels": { "type": "string", "minLength": 1 }
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputs", "sample_filters"],
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "sha256", "source_revision", "license"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "sha256": { "$ref": "#/$defs/sha256" },
+              "source_revision": { "type": "string", "minLength": 1 },
+              "license": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "sample_filters": { "type": "string", "minLength": 1 }
+      }
+    },
+    "randomness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generator", "seeds"],
+      "properties": {
+        "generator": { "type": "string", "minLength": 1 },
+        "seeds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "specification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_kind",
+        "outcome",
+        "controls",
+        "candidates",
+        "candidate_family",
+        "multiplicity"
+      ],
+      "properties": {
+        "target_kind": { "type": "string", "minLength": 1 },
+        "outcome": { "type": "string", "minLength": 1 },
+        "controls": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "candidate_family": { "type": "string", "minLength": 1 },
+        "multiplicity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["error_target", "procedure", "threshold"],
+          "properties": {
+            "error_target": { "type": "string", "minLength": 1 },
+            "procedure": { "type": "string", "minLength": 1 },
+            "threshold": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      }
+    },
+    "candidate_history": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate",
+          "evaluation_order",
+          "status",
+          "selected",
+          "signed_effect",
+          "standard_error",
+          "p_value",
+          "adjusted_p_value",
+          "warnings"
+        ],
+        "properties": {
+          "candidate": { "type": "string", "minLength": 1 },
+          "evaluation_order": { "type": "integer", "minimum": 0 },
+          "status": {
+            "enum": ["not_evaluated", "tested", "rejected", "failed"]
+          },
+          "selected": { "type": "boolean" },
+          "signed_effect": { "$ref": "#/$defs/nullable_number" },
+          "standard_error": { "$ref": "#/$defs/nullable_nonnegative" },
+          "p_value": { "$ref": "#/$defs/nullable_probability" },
+          "adjusted_p_value": { "$ref": "#/$defs/nullable_probability" },
+          "warnings": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observations",
+        "effective_rank",
+        "residual_degrees_of_freedom",
+        "condition_number",
+        "singular_values",
+        "rank_tolerance",
+        "failures"
+      ],
+      "properties": {
+        "observations": { "type": "integer", "minimum": 0 },
+        "effective_rank": { "type": "integer", "minimum": 0 },
+        "residual_degrees_of_freedom": { "type": "integer", "minimum": 0 },
+        "condition_number": { "$ref": "#/$defs/nullable_nonnegative" },
+        "singular_values": {
+          "type": "array",
+          "items": { "type": "number", "minimum": 0 }
+        },
+        "rank_tolerance": { "type": "number", "exclusiveMinimum": 0 },
+        "failures": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["design", "fold_count", "leakage_controls", "metrics"],
+      "properties": {
+        "design": { "type": "string", "minLength": 1 },
+        "fold_count": { "type": "integer", "minimum": 0 },
+        "leakage_controls": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "metrics": {
+          "type": "object",
+          "additionalProperties": {
+            "type": ["number", "integer", "string", "boolean", "null"]
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hashed_path": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "nullable_number": {
+      "type": ["number", "null"]
+    },
+    "nullable_nonnegative": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "nullable_probability": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}

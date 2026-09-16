@@ -1,0 +1,82 @@
+{
+  "schema_version": "jawa-screening-evidence/v1",
+  "analysis": {
+    "id": "schema-contract-example",
+    "evaluated_at_utc": "2026-09-16T12:00:00Z",
+    "code_revision": "0000000000000000000000000000000000000000",
+    "analysis_plan": {
+      "path": "docs/STATISTICAL_ANALYSIS_PLAN.md",
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+    }
+  },
+  "environment": {
+    "lockfile": {
+      "path": "uv.lock",
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    "python": "3.12.0",
+    "jawa": "0.1.0",
+    "numpy": "2.5.3",
+    "polars": "1.44.2",
+    "statsmodels": "0.15.0"
+  },
+  "data": {
+    "inputs": [
+      {
+        "id": "synthetic-contract-fixture",
+        "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "source_revision": "fixture-v1",
+        "license": "CC0-1.0"
+      }
+    ],
+    "sample_filters": "schema example only; no analysis performed"
+  },
+  "randomness": {
+    "generator": "numpy.random.PCG64",
+    "seeds": [1729]
+  },
+  "specification": {
+    "target_kind": "unapproved-schema-placeholder",
+    "outcome": "y",
+    "controls": ["control_1"],
+    "candidates": ["candidate_1"],
+    "candidate_family": "single schema-placeholder candidate",
+    "multiplicity": {
+      "error_target": "unapproved",
+      "procedure": "unapproved",
+      "threshold": 0.05
+    }
+  },
+  "candidate_history": [
+    {
+      "candidate": "candidate_1",
+      "evaluation_order": 0,
+      "status": "not_evaluated",
+      "selected": false,
+      "signed_effect": null,
+      "standard_error": null,
+      "p_value": null,
+      "adjusted_p_value": null,
+      "warnings": ["schema fixture; no statistical evaluation"]
+    }
+  ],
+  "diagnostics": {
+    "observations": 0,
+    "effective_rank": 0,
+    "residual_degrees_of_freedom": 0,
+    "condition_number": null,
+    "singular_values": [],
+    "rank_tolerance": 1e-12,
+    "failures": ["not evaluated"]
+  },
+  "validation": {
+    "design": "not evaluated",
+    "fold_count": 0,
+    "leakage_controls": ["schema fixture only"],
+    "metrics": {}
+  },
+  "warnings": ["This fixture validates structure, not a statistical method."],
+  "limitations": [
+    "No estimator, multiplicity procedure, or inferential claim is approved."
+  ]
+}

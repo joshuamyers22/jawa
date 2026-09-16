@@ -42,3 +42,16 @@ version. Checksums detect change; they do not authenticate the publisher.
 
 Notebooks explore and communicate; production calculations live in typed modules
 with regression tests. A notebook result is not release evidence by itself.
+
+Future screening results must conform to
+`schemas/screening-evidence.schema.json`. The envelope records the full code
+revision, hashed plan and lockfile, input identities and hashes, software
+versions, generator and seeds, complete candidate history, signed effects,
+warnings, numerical diagnostics, validation design, and limitations. The
+artifact's external SHA-256 digest belongs in its run manifest or review record.
+
+Release candidates must pass `make check` on every supported Python version.
+This includes isolated wheel and sdist installation. Tagged releases bind the
+manifest version to tag and distribution metadata and publish a CycloneDX SBOM,
+verified `SHA256SUMS`, and signed provenance as described in
+`docs/RELEASE_PROCESS.md`.

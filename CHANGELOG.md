@@ -12,3 +12,6 @@ Notable changes are recorded here using semantic versioning.
 - Adopted the MIT License.
 - Completed M0 with an evidence-linked project contract, upstream provenance,
   bounded statistical-plan approval, and explicit M2 implementation gates.
+- Completed M1 with a Python 3.11/3.12 CI matrix, isolated wheel/sdist smoke
+  checks, artifact identity verification, checksum/SBOM/signed-provenance release
+  controls, and a tested v1 screening-evidence envelope.

@@ -16,8 +16,8 @@
 - **Explicit non-goals:** Automatic causal discovery, proof of intervention
   effects from observational data, production trading decisions, universal
   feature-selection optimality, or compatibility with upstream internals.
-- **Runtime/deployment environment:** Python 3.11+; offline research and batch
-  evaluation first. No network service or live decision path is in scope.
+- **Runtime/deployment environment:** CPython 3.11 and 3.12; offline research and
+  batch evaluation first. No network service or live decision path is in scope.
 - **Tabular engine:** Polars. Any pandas interoperability exception requires an ADR.
 - **Statistical engine:** Statsmodels plus NumPy/SciPy where justified. Every
   analysis specifies its estimand, model, assumptions, covariance, diagnostics,

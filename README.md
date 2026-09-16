@@ -23,13 +23,14 @@ Pre-implementation and not suitable for consequential decisions. No output may
 be described as causal merely because it is based on partial correlation,
 residualization, feature selection, or temporal ordering.
 
-Governance milestone M0—claim containment, provenance, and project contract—is
-complete. Statistical implementation remains blocked on the M2 specification
-and independent-review gates in [the project plan](docs/PROJECT_PLAN.md).
+Governance milestone M0 and reproducible-foundation milestone M1 are complete.
+Statistical implementation remains blocked on the M2 specification and
+independent-review gates in [the project plan](docs/PROJECT_PLAN.md).
 
 ## Development
 
-Requires Python 3.11+ and [`uv`](https://docs.astral.sh/uv/).
+Supports CPython 3.11 and 3.12 and requires
+[`uv`](https://docs.astral.sh/uv/).
 
 ```sh
 make setup
@@ -37,6 +38,15 @@ make check
 make audit
 make build
 ```
+
+`make check` also builds and installs both the wheel and source distribution in
+separate temporary environments. Release tags additionally produce an SBOM,
+SHA-256 manifest, and signed GitHub provenance. See
+[the release process](docs/RELEASE_PROCESS.md).
+
+The versioned [screening evidence contract](docs/SCREENING_EVIDENCE_CONTRACT.md)
+fixes provenance and review fields for future results. It does not approve or
+implement a screening method.
 
 The generated command-line examples are retained as infrastructure fixtures;
 they are not yet the Jawa screening API:

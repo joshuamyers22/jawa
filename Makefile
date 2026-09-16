@@ -1,18 +1,27 @@
-.PHONY: setup format lint typecheck test check audit build
+.PHONY: setup format lint typecheck test build verify-dist smoke package check audit
+PYTHON ?=
+UV_PYTHON = $(if $(PYTHON),--python $(PYTHON),)
+UV_RUN = uv run $(UV_PYTHON)
+
 setup:
-	uv sync --frozen --dev
+	uv sync --frozen --dev $(UV_PYTHON)
 format:
-	uv run ruff format .
+	$(UV_RUN) ruff format .
 lint:
-	uv run ruff check .
-	uv run ruff format --check .
+	$(UV_RUN) ruff check .
+	$(UV_RUN) ruff format --check .
 typecheck:
-	uv run pyright
+	$(UV_RUN) pyright
 test:
-	uv run python -m unittest discover -s tests
-check: lint typecheck test
-audit:
-	uv audit --preview-features audit-command --locked --no-dev
-	uv run python tools/check_licenses.py
+	$(UV_RUN) python -m unittest discover -s tests
 build:
 	uv build
+verify-dist: build
+	$(UV_RUN) python tools/verify_release.py --dist-dir dist
+smoke: verify-dist
+	$(UV_RUN) python tools/smoke_dist.py --dist-dir dist
+package: verify-dist smoke
+check: lint typecheck test package
+audit:
+	uv audit --preview-features audit-command --locked --no-dev
+	$(UV_RUN) python tools/check_licenses.py
