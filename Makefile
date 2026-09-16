@@ -15,7 +15,7 @@ typecheck:
 test:
 	$(UV_RUN) python -m unittest discover -s tests
 build:
-	uv build
+	uv build --clear --no-create-gitignore
 verify-dist: build
 	$(UV_RUN) python tools/verify_release.py --dist-dir dist
 smoke: verify-dist

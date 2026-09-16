@@ -53,9 +53,16 @@ run remains part of the public Actions record and the corrected commit must pass
 both clean matrix jobs before release.
 
 GitHub CI and secret scanning on the milestone commit provide clean-checkout
-evidence. The `v0.1.0` GitHub release exercises tag/manifest/artifact parity,
+evidence. The `v0.1.1` GitHub release exercises tag/manifest/artifact parity,
 CycloneDX SBOM generation, deterministic checksums, signed Sigstore provenance,
-and same-job release publication.
+same-job release publication, and consumer-side verification.
+
+Consumer verification of the preceding `v0.1.0` release found that the release
+action's broad `dist/*` input published uv's hidden `dist/.gitignore` as
+`default.gitignore`, outside `SHA256SUMS`. That release remains visible as failed
+evidence. Builds now clear `dist/` and suppress creation of that housekeeping
+file; publication also uses an explicit wheel/sdist/SBOM/checksum allowlist.
+M1 closure depends on a clean downloaded `v0.1.1` payload.
 
 ## Evidence contract boundary
 

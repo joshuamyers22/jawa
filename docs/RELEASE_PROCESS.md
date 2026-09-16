@@ -12,7 +12,7 @@ From a clean checkout of the candidate commit:
 make setup
 make check
 make audit
-uv run python tools/verify_release.py --tag v0.1.0 --dist-dir dist
+uv run python tools/verify_release.py --tag v0.1.1 --dist-dir dist
 ```
 
 `make check` runs lint/format checks, strict typing, unit and contract tests,
@@ -36,12 +36,16 @@ After publication, download the release assets and verify them:
 
 ```sh
 uv run python tools/checksums.py verify path/to/downloaded-assets
-gh attestation verify path/to/downloaded-assets/jawa-0.1.0-py3-none-any.whl \
+gh attestation verify path/to/downloaded-assets/jawa-0.1.1-py3-none-any.whl \
   --repo joshuamyers22/jawa
-gh attestation verify path/to/downloaded-assets/jawa-0.1.0.tar.gz \
+gh attestation verify path/to/downloaded-assets/jawa-0.1.1.tar.gz \
   --repo joshuamyers22/jawa
 ```
 
 Do not create or move a release tag until the exact commit has passed required
 main-branch checks. A failed release remains failed evidence; fix forward with a
 new version rather than silently replacing published assets.
+
+Release publication uses an explicit allowlist for wheel, sdist, SBOM, and
+`SHA256SUMS`. `uv build` clears the output directory and suppresses its generated
+`.gitignore`; build-tool housekeeping files are neither checksummed nor published.

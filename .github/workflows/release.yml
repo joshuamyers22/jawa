@@ -46,4 +46,8 @@ jobs:
         with:
           generate_release_notes: true
           fail_on_unmatched_files: true
-          files: dist/*
+          files: |
+            dist/jawa-*.whl
+            dist/jawa-*.tar.gz
+            dist/release-sbom.cdx.json
+            dist/SHA256SUMS
