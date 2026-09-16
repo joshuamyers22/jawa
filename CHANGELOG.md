@@ -10,3 +10,5 @@ Notable changes are recorded here using semantic versioning.
 - Generated a typed, locked Python data/quant foundation from the production
   project template.
 - Adopted the MIT License.
+- Completed M0 with an evidence-linked project contract, upstream provenance,
+  bounded statistical-plan approval, and explicit M2 implementation gates.

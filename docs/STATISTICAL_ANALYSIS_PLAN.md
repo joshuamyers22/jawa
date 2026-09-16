@@ -1,9 +1,18 @@
 # Statistical analysis plan: conditional feature screening
 
-- Status: Draft; blocks screening implementation and all inferential claims
-- Date: 2026-09-15
+- Status: Approved for the M0 scope and claim boundary; not approved for
+  statistical implementation or inferential claims
+- Initial date: 2026-09-15
+- M0 scope approval: Joshua Myers, 2026-09-16
 - Owner: Joshua Myers
-- Independent reviewer: To be named before M2 implementation
+- Independent statistical reviewer: Required and not yet assigned; blocks M2
+  implementation
+
+This approval fixes the predictive/associational scope, causal prohibition, and
+evidence boundary. It deliberately does not approve an estimator, multiplicity
+procedure, calibration tolerance, practical threshold, or final benchmark.
+Those choices require an updated plan and independent statistical approval in
+M2 before screening code or inferential claims are permitted.
 
 ## Decision and target quantity
 

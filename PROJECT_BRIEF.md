@@ -1,5 +1,9 @@
 # Project Brief
 
+- **Status:** Approved as the M0 project contract on 2026-09-16 by Joshua Myers.
+  Statistical implementation and inferential claims remain subject to the M2
+  analysis-plan and independent-review gates.
+
 - **Problem and affected users:** Researchers need a reproducible way to test
   whether candidate features add conditional predictive information without
   turning exploratory association into unsupported causal claims. Initial users

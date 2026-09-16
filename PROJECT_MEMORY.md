@@ -9,7 +9,7 @@ secrets, personal data, client data, or hidden reasoning here.
 | Key | Constraint | Evidence | Last verified |
 |---|---|---|---|
 | `independent-downstream` | Jawa must be described as an independent downstream iteration of `causalscreen`, with no affiliation or endorsement implied. | `UPSTREAM.md`; ADR-0001 | 2026-09-15 |
-| `claims-before-code` | Predictive/associational language is the default; causal wording requires an approved causal estimand, identification argument, and falsification plan. | `PROJECT_BRIEF.md`; `docs/STATISTICAL_ANALYSIS_PLAN.md` | 2026-09-15 |
+| `claims-before-code` | Predictive/associational language is the default; causal wording requires an approved causal estimand, identification argument, and falsification plan. | `PROJECT_BRIEF.md`; `docs/STATISTICAL_ANALYSIS_PLAN.md` | 2026-09-16 |
 | `research-only` | All capabilities are research-only until their capability-specific release gates pass. | `docs/PROJECT_PLAN.md` | 2026-09-15 |
 | `data-boundary` | Initial work uses only synthetic and appropriately licensed public data. | `PROJECT_BRIEF.md` | 2026-09-15 |
 | `locked-evidence` | Consequential results bind inputs, plan, environment, revision, seeds, search history, and output hashes. | `REPRODUCIBILITY.md` | 2026-09-15 |
@@ -22,12 +22,13 @@ secrets, personal data, client data, or hidden reasoning here.
 | `initial-lineage` | The initial scaffold copies no `causalscreen` source; conceptual provenance is documented separately. | `UPSTREAM.md`; ADR-0001 | 2026-09-15 |
 | `capability-staging` | Build and validate the conditional predictive screen before local modeling, drift, or any causal research track. | `docs/PROJECT_PLAN.md` | 2026-09-15 |
 | `project-license` | Distribute Jawa under the MIT License, selected explicitly by the owner. | `LICENSE`; `pyproject.toml` | 2026-09-15 |
+| `m0-contract` | M0 is complete: provenance, independent-downstream identity, claim containment, and the project boundary are approved; no statistical method or inferential claim was approved. | `docs/milestones/M0_COMPLETION.md` | 2026-09-16 |
 
 ## Non-obvious current state
 
 | Key | State worth retrieving later | Evidence | Last verified |
 |---|---|---|---|
-| `preimplementation` | The CLI and regression modules are template fixtures, not a released Jawa screening implementation. | `README.md` | 2026-09-15 |
+| `preimplementation` | M0 is complete, but the CLI and regression modules remain template fixtures rather than a released Jawa screening implementation. | `README.md`; `docs/milestones/M0_COMPLETION.md` | 2026-09-16 |
 | `probe-fs-role` | `probe_fs` is a possible full-conditioning LOCO benchmark comparator, not a dependency or truth oracle. | `docs/PROJECT_PLAN.md` | 2026-09-15 |
 
 ## Verified traps and failed approaches
@@ -42,4 +43,4 @@ secrets, personal data, client data, or hidden reasoning here.
 
 | Key | Unresolved question or next evidence | Owner | Review by |
 |---|---|---|---|
-| `statistical-contract` | Approve the primary estimand, error criterion, and benchmark protocol in the analysis plan. | Joshua Myers | Before screening implementation |
+| `statistical-contract` | For M2, select the estimator, multiplicity target/procedure, calibration tolerance, practical threshold, and final benchmark, then obtain independent statistical approval. | Joshua Myers | Before screening implementation |

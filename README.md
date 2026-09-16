@@ -23,6 +23,10 @@ Pre-implementation and not suitable for consequential decisions. No output may
 be described as causal merely because it is based on partial correlation,
 residualization, feature selection, or temporal ordering.
 
+Governance milestone M0—claim containment, provenance, and project contract—is
+complete. Statistical implementation remains blocked on the M2 specification
+and independent-review gates in [the project plan](docs/PROJECT_PLAN.md).
+
 ## Development
 
 Requires Python 3.11+ and [`uv`](https://docs.astral.sh/uv/).

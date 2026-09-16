@@ -2,7 +2,8 @@
 
 ## Plan metadata
 
-- Status: Proposed; implementation not started
+- Status: Active; M0 complete, implementation not started
+- Last updated: 2026-09-16
 - Accountable owner: Joshua Myers
 - Upstream reference: `rahulkm3/causalscreen` at
   `ff3fb593a926df5f1db422e63a514d2591df245e`
@@ -75,7 +76,20 @@ consequence of finishing code.
 
 ## Milestones
 
+| Milestone | Status | Evidence |
+|---|---|---|
+| M0 — Contract and provenance | Complete (2026-09-16) | `docs/milestones/M0_COMPLETION.md` |
+| M1 — Reproducible foundation | In progress (generated baseline only) | Quality gates and CI; remaining release controls below |
+| M2 — Corrected screen | Not started | Blocked on statistical choices and independent review |
+| M3 — Locked evidence | Not started | Requires M2 protocol freeze |
+| M4 — Local models | Not started | Experimental; requires M2 contracts |
+| M5 — Drift | Not started | Experimental; requires M2 contracts |
+| M6 — Production candidate | Not started | Requires applicable prior gates |
+
 ### M0 — Claim containment, provenance, and project contract
+
+**Status:** Complete on 2026-09-16. See
+`docs/milestones/M0_COMPLETION.md` for the evidence and bounded approval.
 
 Deliverables:
 
