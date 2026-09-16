@@ -45,6 +45,13 @@ second 3.11 run demonstrated that both isolated installations used CPython
 3.11.16. This failure is retained here because it materially changed the
 verification design.
 
+The first clean GitHub matrix run then found a Make variable collision with the
+`UV_PYTHON` environment variable exported by `setup-uv`; the value intended as a
+CLI argument leaked into `uv build`. The internal Make variable was renamed to
+`UV_PYTHON_ARG`, preserving the runner's valid interpreter selection. The failed
+run remains part of the public Actions record and the corrected commit must pass
+both clean matrix jobs before release.
+
 GitHub CI and secret scanning on the milestone commit provide clean-checkout
 evidence. The `v0.1.0` GitHub release exercises tag/manifest/artifact parity,
 CycloneDX SBOM generation, deterministic checksums, signed Sigstore provenance,

@@ -1,10 +1,10 @@
 .PHONY: setup format lint typecheck test build verify-dist smoke package check audit
 PYTHON ?=
-UV_PYTHON = $(if $(PYTHON),--python $(PYTHON),)
-UV_RUN = uv run $(UV_PYTHON)
+UV_PYTHON_ARG = $(if $(PYTHON),--python $(PYTHON),)
+UV_RUN = uv run $(UV_PYTHON_ARG)
 
 setup:
-	uv sync --frozen --dev $(UV_PYTHON)
+	uv sync --frozen --dev $(UV_PYTHON_ARG)
 format:
 	$(UV_RUN) ruff format .
 lint:
