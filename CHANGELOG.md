@@ -2,6 +2,10 @@
 
 Notable changes are recorded here using semantic versioning.
 
+## Unreleased
+
+- Allow Polars 2.x and lock Polars 2.0.0 for reproducible development.
+
 ## 0.1.1 - 2026-09-16
 
 - Established Jawa as an independent downstream iteration of `causalscreen`.
