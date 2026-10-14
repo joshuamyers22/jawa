@@ -11,7 +11,7 @@ classifiers = [
 ]
 dependencies = [
     "numpy>=2,<3",
-    "polars>=1.44.1,<2",
+    "polars>=2.0.0,<3",
     "statsmodels>=0.15,<0.16",
 ]
 
